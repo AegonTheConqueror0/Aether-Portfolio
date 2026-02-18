@@ -1,7 +1,7 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { BIO_DATA } from "./constants";
-import { Message } from "./types";
+import { BIO_DATA } from "./constants.tsx";
+import { Message } from "./types.ts";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
 

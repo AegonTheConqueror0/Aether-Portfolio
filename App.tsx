@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { Assistant } from './components/Assistant';
-import { CustomCursor } from './components/CustomCursor';
-import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { Connect } from './pages/Connect';
+import { Layout } from './components/Layout.tsx';
+import { Assistant } from './components/Assistant.tsx';
+import { CustomCursor } from './components/CustomCursor.tsx';
+import { Home } from './pages/Home.tsx';
+import { About } from './pages/About.tsx';
+import { Connect } from './pages/Connect.tsx';
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');

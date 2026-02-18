@@ -4,11 +4,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zenith // Technical Portfolio</title>
+    <title>AETHER PROTOCOL // Strategic Development</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -27,18 +27,17 @@
       :root {
         --grid-color: rgba(0, 0, 0, 0.05);
         --accent-color: #4f46e5;
-        --bg-color: #f8fafc;
+        --bg-color: #fcfcfc;
         --text-color: #020617;
       }
       
       .dark {
         --grid-color: rgba(255, 255, 255, 0.04);
         --accent-color: #6366f1;
-        --bg-color: #020617;
+        --bg-color: #050505;
         --text-color: #f8fafc;
       }
       
-      /* Hide cursor on devices that support hover */
       @media (hover: hover) and (pointer: fine) {
         body, a, button, [role="button"] {
           cursor: none !important;
@@ -50,7 +49,7 @@
         background-color: var(--bg-color);
         color: var(--text-color);
         overflow-x: hidden;
-        transition: background-color 0.5s ease, color 0.5s ease;
+        transition: background-color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
       }
       .font-mono { font-family: 'JetBrains Mono', monospace; }
       .font-serif { font-family: 'Playfair Display', serif; }
@@ -59,22 +58,40 @@
         background-image: 
           linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
           linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-        background-size: 40px 40px;
-        transition: background-image 0.5s ease;
+        background-size: 50px 50px;
       }
       
-      .perspective-1000 {
-        perspective: 1000px;
+      .perspective-1000 { perspective: 1000px; }
+
+      #init-overlay {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        transition: opacity 1s ease-out;
+      }
+
+      .scanner {
+        width: 200px;
+        height: 2px;
+        background: #6366f1;
+        box-shadow: 0 0 20px #6366f1;
+        animation: scan 2s infinite ease-in-out;
+      }
+
+      @keyframes scan {
+        0%, 100% { transform: translateY(-20px); opacity: 0; }
+        50% { transform: translateY(20px); opacity: 1; }
       }
 
       ::-webkit-scrollbar { width: 4px; }
       ::-webkit-scrollbar-track { background: transparent; }
-      ::-webkit-scrollbar-thumb { background: #1e293b; }
-      .dark ::-webkit-scrollbar-thumb { background: #334155; }
-      ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
-
-      .custom-scrollbar::-webkit-scrollbar { width: 2px; }
-      .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
     </style>
     <script type="importmap">
     {
@@ -90,7 +107,25 @@
     </script>
   </head>
   <body>
+    <div id="init-overlay">
+      <div class="font-mono text-[10px] tracking-[0.8em] text-white uppercase opacity-50 mb-4">Initializing Aether Protocol</div>
+      <div class="scanner"></div>
+      <div class="font-mono text-[8px] text-zinc-600 mt-2 uppercase tracking-widest">Uplink: Synchronizing Node_01</div>
+    </div>
+
     <div class="fixed inset-0 bg-grid pointer-events-none z-[-1]"></div>
     <div id="root"></div>
+
+    <script type="module" src="./index.tsx"></script>
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('init-overlay').style.opacity = '0';
+          setTimeout(() => {
+            document.getElementById('init-overlay').style.display = 'none';
+          }, 1000);
+        }, 1500);
+      });
+    </script>
   </body>
 </html>

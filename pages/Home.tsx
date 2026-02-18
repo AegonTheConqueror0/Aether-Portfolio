@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { PROJECTS, SERVICES, TECH_ARSENAL } from '../constants';
+import { PROJECTS, SERVICES, TECH_ARSENAL } from '../constants.tsx';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
 const ServiceCard: React.FC<{ service: any, idx: number }> = ({ service, idx }) => {
@@ -27,7 +27,7 @@ const ServiceCard: React.FC<{ service: any, idx: number }> = ({ service, idx }) 
     >
       <motion.div
         style={{ rotateX: springX, rotateY: springY }}
-        className="h-full bg-white dark:bg-slate-900 border border-black/10 dark:border-white/10 p-10 hover:border-indigo-500/50 transition-colors shadow-2xl group-hover:shadow-indigo-500/20 relative overflow-hidden"
+        className="h-full bg-white dark:bg-slate-900 border border-black/10 dark:border-white/10 p-10 hover:border-indigo-500/50 transition-all duration-500 shadow-2xl group-hover:shadow-indigo-500/20 relative overflow-hidden"
       >
         <div className="absolute -top-10 -right-10 w-32 h-32 bg-indigo-500/5 rounded-full group-hover:bg-indigo-500/20 transition-all duration-700 blur-3xl"></div>
         
@@ -91,9 +91,9 @@ export const Home: React.FC = () => {
               AETHER PROTOCOL is a boutique laboratory for high-fidelity code and cinematic brand strategy. We specialize in <span className="text-black dark:text-white font-bold underline decoration-indigo-500 underline-offset-8">Next.js performance</span> and <span className="text-black dark:text-white font-bold underline decoration-indigo-500 underline-offset-8">Bubble.io velocity</span>.
             </motion.p>
             <div className="flex flex-wrap gap-8">
-               <button className="group relative bg-black dark:bg-white text-white dark:text-black font-mono text-xs tracking-[0.3em] px-12 py-6 uppercase overflow-hidden">
-                 <span className="relative z-10 group-hover:text-indigo-500 transition-colors">Launch_Protocol_V1</span>
-                 <div className="absolute inset-0 bg-indigo-600/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+               <button className="group relative bg-black dark:bg-white text-white dark:text-black font-mono text-xs tracking-[0.3em] px-12 py-6 uppercase overflow-hidden border border-black/10 dark:border-white/10">
+                 <span className="relative z-10 group-hover:text-white transition-colors">Launch_Protocol_V1</span>
+                 <div className="absolute inset-0 bg-indigo-600 translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-0"></div>
                </button>
                <button className="border-b-2 border-black/10 dark:border-white/10 text-black dark:text-white font-mono text-xs tracking-[0.3em] px-2 py-4 uppercase hover:border-indigo-500 transition-all">
                  [ View_Archives ]
@@ -148,7 +148,7 @@ export const Home: React.FC = () => {
                  { t: 'Bubble.io Velocity Protocol', d: 'Lightning-fast MVP deployment and market testing.' },
                  { t: 'Cinematic Adobe Production', d: 'Premium visual storytelling for digital marketing.' }
                ].map(item => (
-                 <div key={item.t} className="group">
+                 <div key={item.t} className="group cursor-default">
                     <h5 className="font-mono text-sm font-black text-black dark:text-white group-hover:text-indigo-500 transition-colors uppercase tracking-widest">{item.t}</h5>
                     <p className="text-xs text-zinc-500 font-light mt-1">{item.d}</p>
                  </div>
@@ -178,13 +178,13 @@ export const Home: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-56 text-center mb-32 relative overflow-hidden group bg-zinc-950">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale pointer-events-none"></div>
-        <div className="absolute inset-0 bg-indigo-950/40 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale pointer-events-none"></div>
+        <div className="absolute inset-0 bg-indigo-950/60 backdrop-blur-[4px]"></div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <h2 className="text-6xl md:text-9xl font-serif italic mb-20 text-white tracking-tighter">Enter the Protocol.</h2>
           <div className="flex flex-col md:flex-row justify-center gap-10 items-center">
-             <button className="bg-white text-black font-mono text-sm tracking-[0.4em] px-16 py-8 uppercase hover:bg-indigo-600 hover:text-white transition-all shadow-2xl hover:scale-105">
+             <button className="bg-white text-black font-mono text-sm tracking-[0.4em] px-16 py-8 uppercase hover:bg-indigo-600 hover:text-white transition-all shadow-2xl hover:scale-105 active:scale-95">
                 Initialize_Project
              </button>
              <button className="text-white border-b border-white/30 font-mono text-sm tracking-[0.4em] pb-2 uppercase hover:text-indigo-400 hover:border-indigo-400 transition-colors">
