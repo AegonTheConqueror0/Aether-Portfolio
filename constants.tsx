@@ -1,5 +1,5 @@
 
-import { Project, NavItem } from './types';
+import { Project, NavItem } from './types.ts';
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'System.Protocol', path: '/' },
